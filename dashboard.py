@@ -6,13 +6,19 @@ import streamlit as st
 st.header('Nugroho :sparkles:')
 st.subheader('Plot')
 
+nama = st.text_input('Nama', 'Nugroho',label_visibility="collapsed")
+st.write('Halo', nama)
+f1 = st.number_input('f1 =',value=1)
+f2 = st.number_input('f2 =',value=1)
+st.write('f sin = ', f1, ', f cos = ',f2)
+
 x = np.linspace(-2 * np.pi, 2 * np.pi, 1000)  # Generating x values from -2*pi to 2*pi
-y = np.sin(x)  # Calculating sin(x) values
-z = np.cos(x)  # Calculating sin(x) values
+y = np.sin(f1 * x)  # Calculating sin(x) values
+z = np.cos(f2 * x)  # Calculating cos(x) values
 
 fig, ax = plt.subplots(figsize=(16, 8))
 ax.plot(x, y, label='sin(x)', color='b')  # Plotting sin(x) curve
-ax.plot(x, z, label='cos(x)', color='g')  # Plotting sin(x) curve
+ax.plot(x, z, label='cos(x)', color='g')  # Plotting cos(x) curve
 ax.set_ylabel("")
 ax.set_xlabel("x")
 ax.tick_params(axis='y', labelsize=20)
@@ -28,7 +34,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     x = np.linspace(-2 * np.pi, 2 * np.pi, 1000)  # Generating x values from -2*pi to 2*pi
-    y = np.sin(x)  # Calculating sin(x) values
+    y = np.sin(f1*x)  # Calculating sin(x) values
 
     fig, ax = plt.subplots(figsize=(16, 8))
     ax.plot(x, y, label='sin(x)', color='b')  # Plotting sin(x) curve
@@ -42,7 +48,7 @@ with col1:
 
 with col2:
     x = np.linspace(-2 * np.pi, 2 * np.pi, 1000)  # Generating x values from -2*pi to 2*pi
-    y = np.cos(x)  # Calculating sin(x) values
+    y = np.cos(f2*x)  # Calculating sin(x) values
 
     fig, ax = plt.subplots(figsize=(16, 8))
     ax.plot(x, y, label='cos(x)', color='g')  # Plotting cos(x) curve
